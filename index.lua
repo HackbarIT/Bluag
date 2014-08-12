@@ -25,7 +25,7 @@ end
 article = function (env, con)
   con:puts('<a href="/">Startseite</a></br>')
 
-  succ, file = pcall(assert, io.open(localpath .. "/data/" .. page .. ".txt"))
+  succ, file = pcall(assert, io.open("data/" .. page .. ".txt"))
   if succ == true then
     for line in file:lines() do ngx.print(line .. '<br />') end
     file:close()
