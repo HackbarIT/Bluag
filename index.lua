@@ -18,7 +18,7 @@ home = function(env, con)
   for filename in io.popen("ls data"):lines() do
     local title = filename:gsub('.txt', "")
 
-    con:puts('<a href="/' .. title .. '">' .. title  .. '</a><br />') 
+    con:puts('<a href="?p=' .. title .. '">' .. title  .. '</a><br />') 
   end
 end
 
