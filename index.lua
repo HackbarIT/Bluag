@@ -1,6 +1,17 @@
 local lf = require("luafcgid")
 
 function main(env, con) 
+  params = lf.parse(env.QUERY_STRING)
+  page = params['p']
+
+  if not page then 
+    home()
+  else 
+    article()
+  end
+end
+
+home = function()
   con:header("X-Powered-By", "Bluag")
   
   con:puts("Startseite<br />")
