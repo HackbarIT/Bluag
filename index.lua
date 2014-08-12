@@ -27,7 +27,7 @@ article = function (env, con)
 
   succ, file = pcall(assert, io.open("data/" .. page .. ".txt"))
   if succ == true then
-    for line in file:lines() do ngx.print(line .. '<br />') end
+    for line in file:lines() do con:puts(line .. '<br />') end
     file:close()
   else
     con:puts("fail")
