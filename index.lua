@@ -1,10 +1,9 @@
 local lf = require("luafcgid")
 
-local params = lf.parse(env.QUERY_STRING)
-local page = params['p']
-
-
-function main(env, con) 
+function main(env, con)
+  params = lf.parse(env.QUERY_STRING)
+  page = params['p']
+ 
   if not page then 
     home(env, con)
   else 
