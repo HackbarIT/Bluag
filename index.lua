@@ -1,9 +1,10 @@
 local lf = require("luafcgid")
 
-function main(env, con) 
-  params = lf.parse(env.QUERY_STRING)
-  page = params['p']
+local params = lf.parse(env.QUERY_STRING)
+local page = params['p']
 
+
+function main(env, con) 
   if not page then 
     home(env, con)
   else 
@@ -24,9 +25,8 @@ end
 
 article = function (env, con)
   con:puts('<a href="/">Startseite</a></br>')
-  local req_file = uri:gsub('/', "")
 
-  succ, file = pcall(assert, io.open(localpath .. "/data/" .. req_file .. ".txt"))
+  succ, file = pcall(assert, io.open(localpath .. "/data/" .. page .. ".txt"))
   if succ == true then
     for line in file:lines() do ngx.print(line .. '<br />') end
     file:close()
