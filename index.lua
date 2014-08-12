@@ -5,13 +5,13 @@ function main(env, con)
   page = params['p']
 
   if not page then 
-    home()
+    home(env, con)
   else 
-    article()
+    article(env, con)
   end
 end
 
-home = function()
+home = function(env, con)
   con:header("X-Powered-By", "Bluag")
   
   con:puts("Startseite<br />")
@@ -22,7 +22,7 @@ home = function()
   end
 end
 
-article = function ()
+article = function (env, con)
   con:puts('<a href="/">Startseite</a></br>')
   local req_file = uri:gsub('/', "")
 
