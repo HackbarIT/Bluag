@@ -4,7 +4,7 @@ function main(env, con)
   con:header("X-Powered-By", "Bluag")
   
   con:puts("Startseite<br />")
-  for filename in io.popen("ls " .. localpath  .. "/data"):lines() do
+  for filename in io.popen("ls data"):lines() do
     local title = filename:gsub('.txt', "")
 
     con:puts('<a href="/' .. title .. '">' .. title  .. '</a><br />') 
