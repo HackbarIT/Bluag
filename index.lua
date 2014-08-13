@@ -53,7 +53,7 @@ html = function (env, con)
 			local content = string.find(line, "--content--")
 			if content then
 				content_succ, template_file = pcall(assert, io.open("data/test.txt"))
-				if content_succ = true then
+				if content_succ == true then
 					for line in file:lines() do con:puts(line .. '<br />') end
 					file:close()
 				else
