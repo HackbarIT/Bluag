@@ -50,7 +50,7 @@ html = function (env, con)
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
 	if template_succ == true then
 		for line in template_file:lines() do 
-			local content = string.find(line, "--content--")
+			local content = string.find(line, "BluagContent")
 			if content then
 				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 				if content_succ == true then
