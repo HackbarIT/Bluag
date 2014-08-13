@@ -39,7 +39,7 @@ end
 html = function (env, con)
   	con:puts('<h1>HTML Test Page</h1>')
 
-	succ, file = pcall(assert, io.open("data/" .. page .. ".txt"))
+	succ, file = pcall(assert, io.open("data/test.txt"))
 	if succ == true then
 		for line in file:lines() do con:puts(line .. '<br />') end
 		file:close()
