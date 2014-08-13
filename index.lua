@@ -52,9 +52,9 @@ html = function (env, con)
 		for line in template_file:lines() do 
 			local content = string.find(line, "--content--")
 			if content then
-				content_succ, template_file = pcall(assert, io.open("data/test.txt"))
+				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 				if content_succ == true then
-					for line in file:lines() do con:puts(line .. '<br />') end
+					for line in content_file:lines() do con:puts(line .. '<br />') end
 					file:close()
 				else
 					con:puts("fail")
