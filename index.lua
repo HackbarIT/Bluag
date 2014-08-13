@@ -6,6 +6,8 @@ function main(env, con)
  
   if not page then 
     home(env, con)
+  elseif page == "html"
+    html(env, con) then
   else 
     article(env, con)
   end
@@ -32,4 +34,24 @@ article = function (env, con)
   else
     con:puts("fail")
   end
+end
+
+html = function (env, con)
+  	con:puts('<h1>HTML Test Page</h1>')
+
+	succ, file = pcall(assert, io.open("data/" .. page ".txt"))
+	if succ == true then
+		for line in file:lines() do con:puts(line .. '<br />') end
+		file:close()
+	else
+		con:puts("fail")
+	end
+	
+	succ2, file2 = pcall(assert, io.open("template/default.html"))
+	if succ2 == true then
+		for line in file2:lines() do con:puts(line .. '<br />') end
+		file2:close()
+	else
+		con:puts("fail2")
+	end
 end
