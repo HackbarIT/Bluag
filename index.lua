@@ -54,14 +54,14 @@ html = function (env, con)
 			if content then
 				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 				if content_succ == true then
-					for line in content_file:lines() do con:puts(line .. '<br />') end
+					for line in content_file:lines() do con:puts('<p>' .. line .. '</p>') end
 					content_file:close()
 				else
 					con:puts("fail")
 				end
 				--con:puts("<p>Ganz viel Text</p>")
 			else
-				con:puts(line .. '<br />') 
+				con:puts(line .. '\n') 
 			end
 		end
 		template_file:close()
