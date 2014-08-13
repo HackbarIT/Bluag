@@ -49,7 +49,14 @@ html = function (env, con)
 	
 	succ2, file2 = pcall(assert, io.open("template/index.html"))
 	if succ2 == true then
-		for line in file2:lines() do con:puts(line .. '<br />') end
+		for line in file2:lines() do 
+			content = string.find(line, "<!--content--!>")
+			if content then
+				con:puts("<p>Ganz viel Text</p>")
+			else
+				con:puts(line .. '<br />') 
+			end
+		end
 		file2:close()
 	else
 		con:puts("fail2")
