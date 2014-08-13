@@ -37,16 +37,6 @@ article = function (env, con)
 end
 
 html = function (env, con)
-  	con:puts('<h1>HTML Test Page</h1>')
-
-	--succ, file = pcall(assert, io.open("data/test.txt"))
-	--if succ == true then
-	--	for line in file:lines() do con:puts(line .. '<br />') end
-	--	file:close()
-	--else
-	--	con:puts("fail")
-	--end
-	
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
 	if template_succ == true then
 		for line in template_file:lines() do 
@@ -63,7 +53,6 @@ html = function (env, con)
 				else
 					con:puts("fail")
 				end
-				--con:puts("<p>Ganz viel Text</p>")
 			else
 				con:puts(line .. '\n') 
 			end
