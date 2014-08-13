@@ -55,7 +55,7 @@ html = function (env, con)
 				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 				if content_succ == true then
 					for line in content_file:lines() do con:puts(line .. '<br />') end
-					file:close()
+					content_file:close()
 				else
 					con:puts("fail")
 				end
@@ -64,7 +64,7 @@ html = function (env, con)
 				con:puts(line .. '<br />') 
 			end
 		end
-		file2:close()
+		template_file:close()
 	else
 		con:puts("fail2")
 	end
