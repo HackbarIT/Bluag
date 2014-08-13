@@ -6,8 +6,8 @@ function main(env, con)
  
   if not page then 
     home(env, con)
-  elseif page == "html"
-    html(env, con) then
+  elseif page == "html" then
+    html(env, con) 
   else 
     article(env, con)
   end
