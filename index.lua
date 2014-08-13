@@ -51,11 +51,10 @@ html = function (env, con)
 	if succ2 == true then
 		for line in file2:lines() do 
 			content = string.find(line, "<!--content--!>")
-			con:puts(content)
 			if content then
 				con:puts("<p>Ganz viel Text</p>")
 			else
-				--con:puts(line .. '<br />') 
+				con:puts(line .. '<br />') 
 			end
 		end
 		file2:close()
