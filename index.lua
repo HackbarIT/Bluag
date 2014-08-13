@@ -47,7 +47,7 @@ html = function (env, con)
 		con:puts("fail")
 	end
 	
-	succ2, file2 = pcall(assert, io.open("template/default.html"))
+	succ2, file2 = pcall(assert, io.open("template/index.html"))
 	if succ2 == true then
 		for line in file2:lines() do con:puts(line .. '<br />') end
 		file2:close()
