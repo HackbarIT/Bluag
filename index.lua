@@ -54,7 +54,7 @@ html = function (env, con)
 			if content then
 				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 				if content_succ == true then
-					for line in content_file:lines() do con:puts('<p>' .. line .. '</p>') end
+					for content_line in content_file:lines() do con:puts('<p>' .. content_line .. '</p>') end
 					content_file:close()
 				else
 					con:puts("fail")
