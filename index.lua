@@ -55,8 +55,9 @@ html = function (env, con)
 				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 				if content_succ == true then
 					for content_line in content_file:lines() do 
-						if string.find(content_line, '#.*'
-						con:puts('<p>' .. content_line .. '</p>') 
+						if not string.find(content_line, '#.*') then
+							con:puts('<p>' .. content_line .. '</p>') 
+						end
 					end
 					content_file:close()
 				else
