@@ -38,13 +38,16 @@ end
 
 html = function (env, con)
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
-	local content, meta = getContent(con)
+	local content, meta = getContent()
 	if template_succ == true then
 		for line in template_file:lines() do 
 			if string.find(line, "BluagContent")  then
 				con:puts(content)
-			else
+			elseif string.find(line, "BluagMeta") then
+				string.gsub(line, "BluagMetaAuthor", meta["author"])
 				con:puts(line .. '\n') 
+			else
+				con:puts(line .. '\n')
 			end
 		end
 		template_file:close()
@@ -53,7 +56,7 @@ html = function (env, con)
 	end
 end
 
-function getContent(con)
+function getContent()
 
 	local content = ""
 	local meta = {}
