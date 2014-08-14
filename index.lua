@@ -38,7 +38,7 @@ end
 
 html = function (env, con)
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
-	local content = getContent()
+	local content = getContent(con)
 	if template_succ == true then
 		for line in template_file:lines() do 
 			if string.find(line, "BluagContent")  then
@@ -53,7 +53,7 @@ html = function (env, con)
 	end
 end
 
-function getContent()
+function getContent(con)
 
 	local content = ""
 	local meta = {}
