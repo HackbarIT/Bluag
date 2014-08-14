@@ -37,19 +37,19 @@ article = function (env, con)
 end
 
 html = function (env, con)
-	template_succ, template_file = pcall(assert, io.open("template/index.html"))
+	local template_succ, local template_file = pcall(assert, io.open("template/index.html"))
+	local content = getContent()
 	if template_succ == true then
 		for line in template_file:lines() do 
-			local content = string.find(line, "BluagContent")
-			if content then
-				con:puts(getContent())
+			if string.find(line, "BluagContent")  then
+				con:puts(content)
 			else
 				con:puts(line .. '\n') 
 			end
 		end
 		template_file:close()
 	else
-		con:puts("fail2")
+		con:puts("Cannot open Template file")
 	end
 end
 
