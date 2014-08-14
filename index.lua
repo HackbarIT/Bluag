@@ -64,12 +64,13 @@ function getContent(con)
 			if not string.find(content_line, '#.*') then
 				content = content .. '<p>' .. content_line .. '</p>'
 			else
+				con:puts(string.match(content_line, "(%w+)") .. "=")
 				con:puts(string.match(content_line, "=(%w+)"))
 			end
 		end
 		content_file:close()
 	else
-		con:puts("fail")
+		con:puts("Cannot load content")
 	end
 	return content, meta
 end
