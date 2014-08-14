@@ -42,7 +42,7 @@ html = function (env, con)
 		for line in template_file:lines() do 
 			local content = string.find(line, "BluagContent")
 			if content then
-				con:puts(getContent)
+				con:puts(getContent())
 			else
 				con:puts(line .. '\n') 
 			end
