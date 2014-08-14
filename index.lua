@@ -46,7 +46,7 @@ html = function (env, con)
 			elseif string.find(line, "BluagMeta") then
 				line = string.gsub(line, "BluagMetaAuthor", meta["author"])
 				line = string.gsub(line, "BluagMetaDate", meta["date"])
-				line = string.gsub(line, "BluagMetaTitle", meta["title])
+				line = string.gsub(line, "BluagMetaTitle", meta["title"])
 				con:puts(line .. '\n') 
 			else
 				con:puts(line .. '\n')
