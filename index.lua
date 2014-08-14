@@ -38,7 +38,7 @@ end
 
 html = function (env, con)
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
-	local content = getContent(con)
+	local content, meta = getContent(con)
 	if template_succ == true then
 		for line in template_file:lines() do 
 			if string.find(line, "BluagContent")  then
@@ -64,8 +64,9 @@ function getContent(con)
 			if not string.find(content_line, '#.*') then
 				content = content .. '<p>' .. content_line .. '</p>'
 			else
-				con:puts(string.match(content_line, "(%w+)") .. "=")
-				con:puts(string.match(content_line, "=(%w+)"))
+				local name = string.match(content_line, "(%w+)")
+				local var  = string.match(content_line, "=(%w+)")
+				meta[name] = var
 			end
 		end
 		content_file:close()
