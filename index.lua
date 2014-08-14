@@ -56,17 +56,20 @@ end
 function getContent()
 
 	local content = ""
+	local meta = {}
 
 	content_succ, content_file = pcall(assert, io.open("data/test.txt"))
 	if content_succ == true then
 		for content_line in content_file:lines() do
 			if not string.find(content_line, '#.*') then
 				content = content .. '<p>' .. content_line .. '</p>'
+			else
+				con:puts(string.match(line, "(%w+)"))
 			end
 		end
 		content_file:close()
 	else
 		con:puts("fail")
 	end
-	return content
+	return content, meta
 end
