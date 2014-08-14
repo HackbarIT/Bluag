@@ -42,17 +42,7 @@ html = function (env, con)
 		for line in template_file:lines() do 
 			local content = string.find(line, "BluagContent")
 			if content then
-				content_succ, content_file = pcall(assert, io.open("data/test.txt"))
-				if content_succ == true then
-					for content_line in content_file:lines() do 
-						if not string.find(content_line, '#.*') then
-							con:puts('<p>' .. content_line .. '</p>') 
-						end
-					end
-					content_file:close()
-				else
-					con:puts("fail")
-				end
+				con:puts(getContent)
 			else
 				con:puts(line .. '\n') 
 			end
@@ -61,4 +51,22 @@ html = function (env, con)
 	else
 		con:puts("fail2")
 	end
+end
+
+function getContent()
+
+	local content = ""
+
+	content_succ, content_file = pcall(assert, io.open("data/test.txt"))
+	if content_succ == true then
+		for content_line in content_file:lines() do
+			if not string.find(content_line, '#.*') then
+				content = content .. '<p>' .. content_line .. '</p>'
+			end
+		end
+		content_file:close()
+	else
+		con:puts("fail")
+	end
+	return content
 end
