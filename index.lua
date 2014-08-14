@@ -37,7 +37,7 @@ article = function (env, con)
 end
 
 html = function (env, con)
-	local template_succ, local template_file = pcall(assert, io.open("template/index.html"))
+	template_succ, template_file = pcall(assert, io.open("template/index.html"))
 	local content = getContent()
 	if template_succ == true then
 		for line in template_file:lines() do 
