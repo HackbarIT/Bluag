@@ -69,8 +69,8 @@ function getContent()
 			if not string.find(content_line, '#.*') then
 				content = content .. '<p>' .. content_line .. '</p>'
 			else
-				local name = string.match(content_line, "(%w+)")
-				local var  = string.match(content_line, "=(%w+)")
+				local name = string.match(content_line, "(%a+)")
+				local var  = string.sub(content_line, string.find(content_line, "=")+1, -1)
 				meta[name] = var
 			end
 		end
