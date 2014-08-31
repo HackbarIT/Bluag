@@ -26,6 +26,7 @@ article = function (env, con)
 	local content, meta = getContent()
 
 	if content == nil then
+		con:header("HTTP_STATUS", "200 OK")
 		con:puts("404")
 		return
 	end
