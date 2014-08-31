@@ -1,25 +1,24 @@
 local lf = require("luafcgid")
 
 function main(env, con)
-  params = lf.parse(env.QUERY_STRING)
-  page = params['p']
+	params = lf.parse(env.QUERY_STRING)
+  	page = params['p']
  
-  if not page then 
-    home(env, con)
-  else 
-    article(env, con)
-  end
+  	if not page then 
+    		home(env, con)
+  	else 
+    		article(env, con)
+  	end
 end
 
 home = function(env, con)
-  con:header("X-Powered-By", "Bluag")
-  
-  con:puts("Startseite<br />")
-  for filename in io.popen("ls data"):lines() do
-    local title = filename:gsub('.txt', "")
+    
+  	con:puts("Startseite<br />")
+  	for filename in io.popen("ls data"):lines() do
+    		local title = filename:gsub('.txt', "")
 
-    con:puts('<a href="?p=' .. title .. '">' .. title  .. '</a><br />') 
-  end
+    		con:puts('<a href="?p=' .. title .. '">' .. title  .. '</a><br />') 
+  	end
 end
 
 article = function (env, con)
