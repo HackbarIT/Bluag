@@ -26,7 +26,7 @@ article = function (env, con)
 	local content, meta = getContent()
 
 	if content == nil then
-		con:header("HTTP_STATUS", "404 PAGE NOT FOUND")
+		con:header("Status", "404")
 		con:puts("404")
 		return
 	end
