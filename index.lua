@@ -25,6 +25,12 @@ end
 article = function (env, con)
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
 	local content, meta = getContent()
+
+	if content == nil then
+		con:puts("404")
+		return
+	end
+
 	if template_succ == true then
 		for line in template_file:lines() do 
 			if string.find(line, "BluagContent")  then
@@ -62,7 +68,7 @@ function getContent()
 		end
 		content_file:close()
 	else
-		con:puts("Cannot load content")
+		return nil	
 	end
 	return content, meta
 end
