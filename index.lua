@@ -6,8 +6,6 @@ function main(env, con)
  
   if not page then 
     home(env, con)
-  elseif page == "html" then
-    html(env, con) 
   else 
     article(env, con)
   end
@@ -25,18 +23,6 @@ home = function(env, con)
 end
 
 article = function (env, con)
-  con:puts('<a href="/">Startseite</a></br>')
-
-  succ, file = pcall(assert, io.open("data/" .. page .. ".txt"))
-  if succ == true then
-    for line in file:lines() do con:puts(line .. '<br />') end
-    file:close()
-  else
-    con:puts("fail")
-  end
-end
-
-html = function (env, con)
 	template_succ, template_file = pcall(assert, io.open("template/index.html"))
 	local content, meta = getContent()
 	if template_succ == true then
@@ -63,7 +49,7 @@ function getContent()
 	local content = ""
 	local meta = {}
 
-	content_succ, content_file = pcall(assert, io.open("data/test.txt"))
+	content_succ, content_file = pcall(assert, io.open("data/" .. page .. ".txt"))
 	if content_succ == true then
 		for content_line in content_file:lines() do
 			if not string.find(content_line, '#.*') then
