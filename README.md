@@ -8,3 +8,7 @@ Bluag is a lightweight Blog Software. Its written in lua and based on the [lfcgi
 
 ## Maintainer
 Georg @georgkrause Krause, Member of [Hackbar.IT](http://hackbar.it/)
+
+## License
+
+[customized ISC-license](https://github.com/HackbarIT/Bluag/blob/master/LICENSE) © Georg Krause
