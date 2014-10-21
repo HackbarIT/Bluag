@@ -6,8 +6,6 @@ Bluag is a lightweight Blog Software. Its written in lua and based on the [luafc
 
 ## Setup
 
-* setup [luafcgid](https://github.com/HackbarIT/luafcgid)
-
 ### nginx
 
 This is an sample configuration:
@@ -29,6 +27,14 @@ server {
   }
 }
 ```
+
+Don't forget to restart nginx after the changes!
+
+### luafcgid
+
+* download and compile luafcgid
+* run ```./luafcgid scripts/etc/config.debian.lua```
+
 
 ## Maintainer
 Georg @georgkrause Krause, Member of [Hackbar.IT](http://hackbar.it/)
